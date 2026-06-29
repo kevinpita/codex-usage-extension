@@ -38,13 +38,14 @@
 .codex-section-title {
     font-size: 13px;
     font-weight: 600;
-    color: #e0e0e0;
+    color: inherit;
+    opacity: 0.88;
 }
 
 .codex-percent-label {
     font-size: 13px;
     font-weight: bold;
-    color: #ffffff;
+    color: inherit;
 }
 
 /* Progress bar styles */
@@ -81,7 +82,8 @@
 /* Reset label styles */
 .codex-reset-label {
     font-size: 11px;
-    color: #a0a0a0;
+    color: inherit;
+    opacity: 0.63;
 }
 
 /* Footer styles */
@@ -108,7 +110,7 @@
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background-color: rgba(255, 255, 255, 0.06);
-    color: #ffffff;
+    color: inherit;
     transition: background-color 160ms ease-out, border-color 160ms ease-out;
 }
 
@@ -129,6 +131,7 @@
 .codex-last-updated-label {
     font-size: 10px;
     font-style: italic;
-    color: #808080;
+    color: inherit;
+    opacity: 0.5;
     text-align: right;
 }
