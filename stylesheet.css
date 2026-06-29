@@ -54,7 +54,8 @@
 .codex-panel-tier {
     font-size: 9pt;
     font-weight: bold;
-    color: rgba(128, 128, 128, 1.0);
+    color: inherit;
+    opacity: 0.63;
     font-feature-settings: "tnum";
 }
 
@@ -82,7 +83,8 @@
 
 .codex-subtitle {
     font-size: 9pt;
-    color: rgba(128, 128, 128, 1.0);
+    color: inherit;
+    opacity: 0.63;
 }
 
 .codex-pill {
@@ -98,7 +100,8 @@
 .codex-section-label {
     font-size: 8pt;
     font-weight: bold;
-    color: rgba(128, 128, 128, 1.0);
+    color: inherit;
+    opacity: 0.63;
     margin: 10px 0 8px 0;
 }
 
@@ -148,12 +151,14 @@
 
 .codex-caption {
     font-size: 9pt;
-    color: rgba(128, 128, 128, 1.0);
+    color: inherit;
+    opacity: 0.63;
 }
 
 .codex-note {
     font-size: 9pt;
-    color: rgba(128, 128, 128, 1.0);
+    color: inherit;
+    opacity: 0.63;
 }
 
 .codex-note-warn {
@@ -175,13 +180,15 @@
 
 .codex-reset-time {
     font-size: 9.5pt;
-    color: rgba(128, 128, 128, 1.0);
+    color: inherit;
+    opacity: 0.63;
     font-feature-settings: "tnum";
 }
 
 .codex-reset-empty {
     font-size: 9pt;
-    color: rgba(128, 128, 128, 1.0);
+    color: inherit;
+    opacity: 0.63;
     margin: 0 0 4px 0;
 }
 
@@ -233,7 +240,8 @@
 
 .codex-updated {
     font-size: 9pt;
-    color: rgba(128, 128, 128, 1.0);
+    color: inherit;
+    opacity: 0.5;
 }
 
 .codex-footer-button {
