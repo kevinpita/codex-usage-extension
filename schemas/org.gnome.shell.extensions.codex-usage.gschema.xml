@@ -7,9 +7,14 @@
       <description>How often to refresh usage data in seconds</description>
     </key>
     <key name="display-mode" type="s">
-      <default>'text'</default>
+      <default>'ring'</default>
       <summary>Display mode</summary>
-      <description>How to display usage in the panel: 'text' for percentage text, 'bar' for a progress bar, or 'both' for both</description>
+      <description>How to display usage in the panel: 'ring' for a circular gauge and percentage, 'text' for percentage text, 'bar' for a progress bar, or 'both' for bar and percentage</description>
+    </key>
+    <key name="panel-window" type="s">
+      <default>'primary'</default>
+      <summary>Panel usage window</summary>
+      <description>Which usage window the panel reflects: 'primary' for the 5-hour window, 'secondary' for the 7-day window, or 'max' for the most constrained window</description>
     </key>
     <key name="usage-display" type="s">
       <default>'used'</default>
@@ -25,6 +30,16 @@
       <default>true</default>
       <summary>Show icon</summary>
       <description>Whether to show the Codex icon in the top bar</description>
+    </key>
+    <key name="show-additional-limits" type="b">
+      <default>true</default>
+      <summary>Show additional limits</summary>
+      <description>Whether to show model-specific rate limits (e.g. GPT-5.3-Codex-Spark) in the menu</description>
+    </key>
+    <key name="show-tier" type="b">
+      <default>true</default>
+      <summary>Show tier</summary>
+      <description>Whether to show the detected plan tier in the top bar</description>
     </key>
     <key name="proxy-url" type="s">
       <default>''</default>

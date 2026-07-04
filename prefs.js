@@ -47,26 +47,54 @@ export default class CodexUsagePreferences extends ExtensionPreferences {
 
         const displayModeRow = new Adw.ComboRow({
             title: 'Display Mode',
-            subtitle: 'Show usage as text percentage, progress bar, or both',
+            subtitle: 'Show usage as a ring, text percentage, progress bar, or both',
         });
 
         const displayModeModel = new Gtk.StringList();
+        displayModeModel.append('Ring + Percentage');
         displayModeModel.append('Text (percentage)');
         displayModeModel.append('Progress Bar');
-        displayModeModel.append('Both');
+        displayModeModel.append('Bar + Percentage');
         displayModeRow.set_model(displayModeModel);
 
         const currentMode = settings.get_string('display-mode');
-        const modeIndex = currentMode === 'bar' ? 1 : currentMode === 'both' ? 2 : 0;
+        const modeIndex = currentMode === 'text' ? 1
+            : currentMode === 'bar' ? 2
+                : currentMode === 'both' ? 3
+                    : 0;
         displayModeRow.set_selected(modeIndex);
 
         displayModeRow.connect('notify::selected', () => {
             const selected = displayModeRow.get_selected();
-            const modes = ['text', 'bar', 'both'];
+            const modes = ['ring', 'text', 'bar', 'both'];
             settings.set_string('display-mode', modes[selected]);
         });
 
         displayGroup.add(displayModeRow);
+
+        const panelWindowRow = new Adw.ComboRow({
+            title: 'Panel Reflects',
+            subtitle: 'Choose the usage window used for panel color and percentage',
+        });
+
+        const panelWindowModel = new Gtk.StringList();
+        panelWindowModel.append('Most constrained');
+        panelWindowModel.append('5-hour window');
+        panelWindowModel.append('7-day window');
+        panelWindowRow.set_model(panelWindowModel);
+
+        const currentPanelWindow = settings.get_string('panel-window');
+        panelWindowRow.set_selected(currentPanelWindow === 'primary' ? 1
+            : currentPanelWindow === 'secondary' ? 2
+                : 0);
+
+        panelWindowRow.connect('notify::selected', () => {
+            const selected = panelWindowRow.get_selected();
+            const windows = ['max', 'primary', 'secondary'];
+            settings.set_string('panel-window', windows[selected]);
+        });
+
+        displayGroup.add(panelWindowRow);
 
         const usageDisplayRow = new Adw.ComboRow({
             title: 'Usage Values',
@@ -119,6 +147,36 @@ export default class CodexUsagePreferences extends ExtensionPreferences {
             Gio.SettingsBindFlags.DEFAULT
         );
         displayGroup.add(showIconRow);
+
+        const showTierRow = new Adw.SwitchRow({
+            title: 'Show Tier',
+            subtitle: 'Display the detected plan or CODEX fallback in the top bar',
+        });
+        settings.bind(
+            'show-tier',
+            showTierRow,
+            'active',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        displayGroup.add(showTierRow);
+
+        const menuGroup = new Adw.PreferencesGroup({
+            title: 'Menu',
+            description: 'Configure what the dropdown menu shows',
+        });
+        page.add(menuGroup);
+
+        const additionalLimitsRow = new Adw.SwitchRow({
+            title: 'Show Additional Limits',
+            subtitle: 'Display model-specific limits (e.g. GPT-5.3-Codex-Spark) in the menu',
+        });
+        settings.bind(
+            'show-additional-limits',
+            additionalLimitsRow,
+            'active',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        menuGroup.add(additionalLimitsRow);
 
         const networkGroup = new Adw.PreferencesGroup({
             title: 'Network',

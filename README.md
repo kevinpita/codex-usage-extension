@@ -3,13 +3,17 @@
 Display OpenAI Codex usage in the GNOME Shell top panel.
 
 > Forked from [claude-usage-extension](https://github.com/Haletran/claude-usage-extension) by Haletran. Now maintained by [kevinpita](https://github.com/kevinpita).
+>
+> The current UI direction was inspired by Dennis van der Stelt's [Claude Code Usage Monitor](https://github.com/dvdstelt/ClaudeCodeUsage), especially its compact panel gauge, projected burn-rate colors, reset captions, and polished popup layout.
 
 ## What It Shows
 
-- Shows current 5-hour usage in the top panel
+- Shows current usage in the top panel with a circular ring, compact bar, text, or bar plus text
 - Displays 5-hour and weekly usage in the dropdown menu
-- Shows reset countdowns and last refresh time
-- Supports text, progress bar, or both
+- Displays model-specific limits (e.g. GPT-5.3-Codex-Spark) in the dropdown menu, toggleable in settings
+- Colors usage from projected end-of-window burn rate, so amber/red can appear before the limit is reached
+- Shows reset countdowns, banked pending resets with their expiry, projected exhaustion estimates, and last refresh time
+- Can reflect the 5-hour window, weekly window, or whichever window is most constrained
 - Can show used or remaining percentages
 - Includes configurable refresh interval, icon style, and optional HTTP proxy
 
@@ -68,3 +72,7 @@ The extension reads authentication from `~/.codex/auth.json` or `$CODEX_HOME/aut
 ## Disclaimer
 
 This extension is not affiliated with, funded by, or associated with OpenAI.
+
+## License Notes
+
+This project is currently MIT licensed. The Claude Code Usage Monitor project that inspired the refreshed UI is GPL-2.0-or-later, so source code or assets from that project should not be copied into this repository unless this project is relicensed compatibly or separate permission is granted.
