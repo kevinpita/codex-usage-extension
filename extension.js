@@ -111,8 +111,8 @@ function planLabel(value) {
         return 'CODEX';
     const normalized = raw.toLowerCase().replace(/[\s_-]/g, '');
     const known = [
-        ['prolite', 'PRO LITE'],
-        ['pro', 'PRO'],
+        ['prolite', 'PRO X5'],
+        ['pro', 'PRO X20'],
         ['plus', 'PLUS'],
         ['free', 'FREE'],
         ['max', 'MAX'],
