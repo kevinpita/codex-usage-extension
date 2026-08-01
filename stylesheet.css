@@ -92,7 +92,7 @@
     font-weight: bold;
     padding: 3px 9px;
     border-radius: 999px;
-    color: #ffd9a8;
+    color: inherit;
     background-color: rgba(230, 97, 0, 0.18);
     border: 1px solid rgba(230, 97, 0, 0.4);
 }
