@@ -19,7 +19,7 @@ Display OpenAI Codex usage in the GNOME Shell top panel.
 
 ## Requirements
 
-- GNOME Shell 46, 47, 48, 49, or 50
+- GNOME Shell 46, 47, 48, 49, 50, or 51
 - Codex CLI installed and authenticated so `~/.codex/auth.json` exists
 
 ## Installation

@@ -2,7 +2,7 @@
   "name": "Codex Usage",
   "description": "Display OpenAI Codex usage from local session data in the top panel. Forked from claude-usage-extension by Haletran. This extension is not affiliated, funded, or in any way associated with OpenAI.",
   "uuid": "codex-usage@kevinpita.dev",
-  "shell-version": ["46", "47", "48", "49", "50"],
+  "shell-version": ["46", "47", "48", "49", "50", "51"],
   "url": "https://github.com/kevinpita/codex-usage-extension",
   "settings-schema": "org.gnome.shell.extensions.codex-usage",
   "donations": {
