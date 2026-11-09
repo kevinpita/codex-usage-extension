@@ -23,6 +23,16 @@ const RING_WIDTH = 3;
 const FIVE_HOUR_SECONDS = 5 * 3600;
 const SEVEN_DAY_SECONDS = 7 * 24 * 3600;
 
+// StBoxLayout gained "orientation" in Shell 48 and lost "vertical" in Shell 51.
+const BOX_HAS_ORIENTATION =
+    St.BoxLayout.list_properties().some(prop => prop.name === 'orientation');
+
+function verticalBox(params = {}) {
+    if (BOX_HAS_ORIENTATION)
+        return new St.BoxLayout({...params, orientation: Clutter.Orientation.VERTICAL});
+    return new St.BoxLayout({...params, vertical: true});
+}
+
 function severity(util) {
     if (util >= 90)
         return 'usage-critical';
@@ -130,7 +140,7 @@ function planLabel(value) {
 
 class Meter {
     constructor(name) {
-        this.root = new St.BoxLayout({vertical: true, style_class: 'codex-meter'});
+        this.root = verticalBox({style_class: 'codex-meter'});
 
         const row = new St.BoxLayout({style_class: 'codex-meter-row'});
         this._name = new St.Label({text: name, style_class: 'codex-meter-name', x_expand: true});
@@ -378,10 +388,7 @@ class CodexUsageIndicator extends PanelMenu.Button {
             reactive: false,
             can_focus: false,
         });
-        const root = new St.BoxLayout({
-            vertical: true,
-            style_class: 'codex-popup',
-        });
+        const root = verticalBox({style_class: 'codex-popup'});
         item.add_child(root);
         this.menu.addMenuItem(item);
 
@@ -391,8 +398,7 @@ class CodexUsageIndicator extends PanelMenu.Button {
             style_class: 'codex-logo',
             y_align: Clutter.ActorAlign.CENTER,
         });
-        const who = new St.BoxLayout({
-            vertical: true,
+        const who = verticalBox({
             x_expand: true,
             y_align: Clutter.ActorAlign.CENTER,
         });
@@ -426,7 +432,7 @@ class CodexUsageIndicator extends PanelMenu.Button {
         root.add_child(this._fiveHourMeter.root);
         root.add_child(this._weeklyMeter.root);
 
-        this._additionalBox = new St.BoxLayout({vertical: true});
+        this._additionalBox = verticalBox();
         this._additionalBox.visible = false;
         root.add_child(this._additionalBox);
 
@@ -434,10 +440,7 @@ class CodexUsageIndicator extends PanelMenu.Button {
             text: 'PENDING RESETS',
             style_class: 'codex-section-label',
         }));
-        this._resetList = new St.BoxLayout({
-            vertical: true,
-            style_class: 'codex-reset-list',
-        });
+        this._resetList = verticalBox({style_class: 'codex-reset-list'});
         root.add_child(this._resetList);
 
         this._error = new St.Label({
